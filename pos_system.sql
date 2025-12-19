@@ -41,7 +41,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `stock`, `created_at`, `updated_at`) VALUES
-(0, 'Tinapa', 20.00, 0, '2025-12-19 06:44:35', '2025-12-19 06:47:43'),
 (1, 'Intel Core i9-14900K CPU', 32999.00, 10, '2025-12-17 22:23:56', '2025-12-19 06:22:23'),
 (2, 'AMD Ryzen 9 7950X CPU', 30999.00, 4, '2025-12-17 22:23:56', '2025-12-18 11:24:44'),
 (3, 'NVIDIA RTX 4090 GPU', 89999.00, 0, '2025-12-17 22:23:56', '2025-12-18 11:20:32'),
@@ -160,7 +159,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
 (1, 'admin', 'admin123', 'admin', '2025-12-17 22:23:56'),
 (2, 'Kervy', 'K3rv6747', 'admin', '2025-12-17 22:23:56'),
 (4, 'Maria', 'Maria123', 'staff', '2025-12-17 22:23:56'),
-(5, 'ES', 'ESlove', 'admin', '2025-12-18 11:22:26');
+(5, 'John ', 'John123 ', 'staff', '2025-12-18 11:22:26');
 
 --
 -- Indexes for dumped tables
