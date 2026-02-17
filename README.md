@@ -45,7 +45,3 @@ IT5FinalProject/
 ├── mainWindow.py
 └── receipt_generator.py
 ```
-
-## Description
-
-This is a Python-based Point of Sale (POS) system built with an MVC (Model-View-Controller) architecture pattern.
