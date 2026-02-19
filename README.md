@@ -16,7 +16,12 @@ IT5FinalProject/
 ├── Model/
 │   ├── __init__.py
 │   ├── cart.py
-│   ├── data_model.py
+│   ├── data_model/
+│   │   ├── __init__.py
+│   │   ├── cart_operations.py
+│   │   ├── product_operations.py
+│   │   ├── transaction_operations.py
+│   │   └── user_operations.py
 │   ├── product.py
 │   ├── transaction.py
 │   └── user.py
@@ -45,3 +50,4 @@ IT5FinalProject/
 ├── mainWindow.py
 └── receipt_generator.py
 ```
+
