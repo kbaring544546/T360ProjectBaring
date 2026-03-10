@@ -12,7 +12,8 @@ from Controller.overview_controller import OverviewController
 class AdminTabbedView(QWidget):
     logout_signal = pyqtSignal()
 
-    add_user_signal = pyqtSignal(str, str, str)
+    # Updated: now carries 7 fields (username, password, role, first_name, last_name, email, phone_number)
+    add_user_signal = pyqtSignal(str, str, str, str, str, str, str)
     delete_user_signal = pyqtSignal(str)
     reactivate_user_signal = pyqtSignal(str)
     search_users_signal = pyqtSignal(str)
@@ -148,7 +149,6 @@ class AdminTabbedView(QWidget):
         self.transactions_tab.search_transactions_signal.connect(self.search_transactions_signal.emit)
         self.transactions_tab.filter_by_month_signal.connect(self.filter_by_month_signal.emit)
 
-        # ── Wire Overview → Transactions navigation ──────────────────
         self.overview_tab.navigate_to_transactions.connect(
             lambda: self.tab_widget.setCurrentIndex(1)
         )

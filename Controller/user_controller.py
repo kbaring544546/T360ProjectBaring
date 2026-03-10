@@ -13,12 +13,20 @@ class UserController:
         try:
             conn = get_connection()
             cur = conn.cursor(dictionary=True)
-            cur.execute("SELECT id, username, password, role, active FROM users")
+            cur.execute("""
+                SELECT id, username, password, role, active,
+                       first_name, last_name, email, phone_number
+                FROM users
+            """)
             rows = cur.fetchall()
 
             self.model.users = []
             for row in rows:
-                user = User(row['username'], row['password'], row['role'], row['active'])
+                user = User(
+                    row['username'], row['password'], row['role'], row['active'],
+                    row.get('first_name', ''), row.get('last_name', ''),
+                    row.get('email', ''), row.get('phone_number', '')
+                )
                 user.id = row['id']
                 self.model.users.append(user)
 
@@ -28,19 +36,25 @@ class UserController:
             logger.error(f"Error loading users: {e}")
             self.model.users = []
 
-    def handle_add_user(self, username, password, role):
+    def handle_add_user(self, username, password, role, first_name="", last_name="", email="", phone_number=""):
         if self.model.find_user_by_username(username):
             self.main.admin_tabbed_view.user_mgmt_tab.show_error("Error", "Username already exists")
             return
 
         try:
-            new_user = User.create_with_hashed_password(username, password, role)
+            new_user = User.create_with_hashed_password(
+                username, password, role,
+                first_name, last_name, email, phone_number
+            )
 
             conn = get_connection()
             cur = conn.cursor()
             cur.execute(
-                "INSERT INTO users (username, password, role) VALUES (%s, %s, %s)",
-                (new_user.username, new_user.password, new_user.role)
+                """INSERT INTO users
+                   (username, password, role, first_name, last_name, email, phone_number)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s)""",
+                (new_user.username, new_user.password, new_user.role,
+                 new_user.first_name, new_user.last_name, new_user.email, new_user.phone_number)
             )
             conn.commit()
             conn.close()

@@ -1,23 +1,12 @@
 from PyQt6.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel,
     QPushButton, QTableWidget, QTableWidgetItem,
-    QHeaderView, QFrame, QProgressBar
-)
+    QHeaderView, QFrame, QProgressBar)
 from PyQt6.QtGui import QFont, QColor
 from PyQt6.QtCore import Qt
-from datetime import datetime
 from View.colors import *
 
-
 class AvgTransactionDialog(QDialog):
-    """
-    Dialog showing average transaction breakdown for the selected month.
-
-    Displays:
-    • Key stats  — avg, median, lowest, highest
-    • A simple amount-range distribution (bar-style)
-    • Full sorted transaction table for the month
-    """
 
     def __init__(self, transactions, month_name, year, parent=None):
         super().__init__(parent)

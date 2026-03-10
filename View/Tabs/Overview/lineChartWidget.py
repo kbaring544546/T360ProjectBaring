@@ -3,7 +3,6 @@ from PyQt6.QtGui import QPainter, QColor, QPen, QBrush, QLinearGradient, QFont
 from PyQt6.QtCore import Qt, QPoint
 from PyQt6.QtGui import QPolygon
 
-
 class LineChartWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)

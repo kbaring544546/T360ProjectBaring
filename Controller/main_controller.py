@@ -36,6 +36,7 @@ class POSController:
         self.admin_tabbed_view.logout_signal.connect(self.auth.handle_logout)
         self.pos_view.logout_signal.connect(self.auth.handle_logout)
 
+        # Updated: now passes 7 args (username, password, role, first_name, last_name, email, phone)
         self.admin_tabbed_view.add_user_signal.connect(self.user.handle_add_user)
         self.admin_tabbed_view.delete_user_signal.connect(self.user.handle_delete_user)
         self.admin_tabbed_view.reactivate_user_signal.connect(self.user.handle_reactivate_user)
@@ -63,9 +64,8 @@ class POSController:
         )
         self.admin_tabbed_view.update_products_table(self.model.products)
 
-        now = datetime.now()
-        filtered = self.transaction._filter_by_month(self.model.transactions, now.month, now.year)
-        self.admin_tabbed_view.update_transactions_table(filtered)
+        # Show ALL transactions (not filtered by month) so older data is always visible
+        self.admin_tabbed_view.update_transactions_table(self.model.transactions)
 
         self.admin_tabbed_view.tab_widget.setCurrentIndex(0)
 

@@ -10,8 +10,6 @@ from View.colors import *
 
 
 class TodayRevenueDialog(QDialog):
-    """Dialog showing all transactions for today"""
-
     def __init__(self, transactions, parent=None):
         super().__init__(parent)
         self.transactions = self._filter_today(transactions)
